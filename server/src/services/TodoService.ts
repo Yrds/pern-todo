@@ -2,7 +2,7 @@ import databaseService from './DatabaseService';
 import { Pool, QueryResult } from 'pg';
 
 export type Todo = {
-  id?: number,
+  todo_id?: number,
   description: string,
 }
 
@@ -33,26 +33,13 @@ export default class TodoService {
     }
   }
 
-  async get(todoId: number): Promise<Todo> {
-    try {
-      const result = await this.pool.query(
-        "SELECT * FROM todo WHERE todo_id = $1", 
-        [todoId]
-      );
-      return result.rows[0] as Todo;
-    }
-    catch(err) {
-      throw new Error('Unexpected error ' + err.message);
-    }
-  }
-
   async update(id: number, todo: Todo): Promise<Todo>{
     try {
       const result = await this.pool.query(
-        "UPDATE todo SET descriptions = $1 where todo_id = $2", 
+        "UPDATE todo SET description = $1 where todo_id = $2", 
         [todo.description, id]
       );
-      return result.rows[0] as Todo;
+      return todo;
     }
     catch(err) {
       throw new Error('Unexpected error ' + err.message);
