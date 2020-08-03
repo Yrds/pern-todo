@@ -7,7 +7,7 @@ class DatabaseService {
     this.pool = new Pool({
       user: "postgres",
       password: "example",
-      host: "localhost",
+      host: "db",
       port: 5432,
       database: "perntodo"
     })
