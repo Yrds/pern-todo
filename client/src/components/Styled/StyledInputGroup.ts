@@ -5,6 +5,7 @@ import { Color } from './Color';
 
 export const StyledInputGroup = styled.div`
   border: solid ${Color.PRIMARY} 1px;
+  display: inline-block;
   ${StyledInput},
   ${StyledButton}{
     height: 100%;

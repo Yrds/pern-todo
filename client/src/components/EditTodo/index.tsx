@@ -1,8 +1,9 @@
 import React, { Component, FormEvent, ChangeEvent } from 'react';
 import { Todo } from '../../types/Todo';
+import { StyledInputGroup, StyledInput, StyledButton, StyledForm } from '../Styled';
 
 type EditTodoState = {
-  newTodo: Todo
+  newDescription: string
 }
 
 type EditTodoProps = {
@@ -12,26 +13,29 @@ type EditTodoProps = {
 
 class EditTodo extends Component<EditTodoProps, EditTodoState> {
   readonly state = {
-    newTodo: this.props.todo
+    newDescription: this.props.todo.description
   }
 
   onFormSubmit(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
-    this.props.onSubmitEdit(this.state.newTodo);
+    this.props.onSubmitEdit({
+      todo_id: this.props.todo.todo_id,
+      description: this.state.newDescription
+    });
   }
 
   onInputChange(event: ChangeEvent<HTMLInputElement>){
-    const newTodo: Todo = this.state.newTodo;
-    newTodo.description = event.target.value;
-    this.setState({newTodo});
+    this.setState({newDescription: event.target.value });
   }
 
   render(){
     return (
-      <form onSubmit={e => this.onFormSubmit(e)}>
-        <input value={this.state.newTodo.description} onChange={e => this.onInputChange(e)}/>
-        <button>Save</button>
-      </form>
+      <StyledForm onSubmit={e => this.onFormSubmit(e)}>
+        <StyledInputGroup>
+          <StyledInput value={this.state.newDescription} onChange={e => this.onInputChange(e)}/>
+          <StyledButton>Save</StyledButton>
+        </StyledInputGroup>
+      </StyledForm>
     )
   }
 }

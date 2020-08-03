@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { GlobalStyle } from './App.styles';
 import { StyledContainer } from './components/Styled';
+import { ModalProvider } from 'styled-react-modal';
+
 
 //STOPED USING DUE TO UNSAFE_componentWillMount for now, <link> tag it's on public/ directory
 //import { Helmet } from 'react-helmet';
@@ -77,17 +79,19 @@ class App extends Component<any, AppState> {
 
         <GlobalStyle/>
         <Header/>
-        <StyledContainer>
-          <TodoInput onAdd={this.addTodo}/>
-          <h1>Todo List</h1>
-          <TodoList todos={this.state.todos}
-            onDelete={this.deleteTodo}
-            onEdit={this.editTodo}/>
-        </StyledContainer>
-        <Footer/>
+        <ModalProvider>
+          <StyledContainer>
+            <TodoInput onAdd={this.addTodo}/>
+            <h1>Todo List</h1>
+            <TodoList todos={this.state.todos}
+              onDelete={this.deleteTodo}
+              onEdit={this.editTodo}/>
+          </StyledContainer>
+          <Footer/>
+        </ModalProvider>
       </>
     );
-  }
+}
 }
 
 export default App;

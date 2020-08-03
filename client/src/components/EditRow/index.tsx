@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Todo } from '../../types/Todo';
 import EditTodo from '../EditTodo';
-import Modal from 'react-modal';
-import {StyledButton, StyledInputGroup} from '../Styled';
+import {StyledButton, StyledInputGroup, StyledModal} from '../Styled';
+import { FaTrash, FaEdit } from 'react-icons/fa';
 
 type EditRowState = {
   modalVisible: boolean
@@ -39,13 +39,15 @@ class EditRow extends Component<EditRowProps, EditRowState> {
       <tr>
         <td>{this.props.todo.description}</td>
         <td>
-          <Modal isOpen={this.state.modalVisible} ariaHideApp={false}>
+          <StyledModal
+            isOpen={this.state.modalVisible}
+            onBackgroundClick={e => this.closeModal()}
+            onEscapeKeydown={e => this.closeModal()}>
             <EditTodo todo={this.props.todo} onSubmitEdit={(todo: Todo) => this.onSubmitEdit(todo)} />
-            <StyledButton onClick={_ => this.closeModal()}>Close</StyledButton>
-          </Modal>
+          </StyledModal>
           <StyledInputGroup>
-            <StyledButton onClick={_ => this.openModal()}>Edit</StyledButton>
-            <StyledButton onClick={_ => this.props.onDelete(this.props.todo) }>Delete</StyledButton>
+            <StyledButton onClick={_ => this.openModal()}><FaEdit/></StyledButton>
+            <StyledButton onClick={_ => this.props.onDelete(this.props.todo) }><FaTrash/></StyledButton>
           </StyledInputGroup>
         </td>
       </tr>

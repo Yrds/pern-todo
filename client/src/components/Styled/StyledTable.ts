@@ -3,19 +3,27 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   display: flex;
   flex-direction: column;
+  thead {
+    height: 2rem;
+  }
   thead, tbody, tr{
     display:flex;
     width: 100%;
     flex-wrap: wrap;
   }
   tr{
-    justify-content: space-around;
-    td:nth-child(1), th:nth-child(1){
+    td, th{
+      box-sizing:border-box;
       text-align: left;
-      flex-basis: 80%;
-      flex-grow: 1;
       overflow: hidden;
       text-overflow: ellipsis;
+      flex-grow: 1;
+      &:first-child {
+        flex-basis: 80%;
+      }
+      &:last-child{
+        flex-basis: 20%;
+      }
     }
 
   }

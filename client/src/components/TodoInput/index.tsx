@@ -1,6 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import { Todo } from '../../types/Todo';
-import { StyledForm, StyledInput, StyledButton, StyledContainer, StyledInputGroup } from '../Styled';
+import {  StyledInput, StyledButton, StyledInputGroup } from '../Styled';
 import { CustomStyledForm } from './styles';
 
 

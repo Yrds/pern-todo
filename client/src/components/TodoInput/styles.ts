@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledForm, StyledInput, Color } from '../Styled';
+import { StyledForm, StyledInput } from '../Styled';
 
 export const CustomStyledForm = styled(StyledForm)`
   justify-content: center;
