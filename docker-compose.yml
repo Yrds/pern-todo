@@ -7,9 +7,18 @@ services:
     environment:
       POSTGRES_PASSWORD: example
     volumes:
-      - database:/var/lib/postgresql/data
+      - ./database:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
-volumes:
-  database:
+  server:
+    user: '1000'
+    image: node
+    volumes:
+      - ./server:/app
+    command: ["npm", "start"]
+    working_dir: /app
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
