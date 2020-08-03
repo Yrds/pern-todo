@@ -12,12 +12,15 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-modal": "^3.10.6",
     "@types/styled-components": "^5.1.1",
+    "@types/styled-react-modal": "^1.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-icons": "^3.10.0",
     "react-modal": "^3.11.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
+    "styled-react-modal": "^2.0.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
